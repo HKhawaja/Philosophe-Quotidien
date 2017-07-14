@@ -1,0 +1,24 @@
+{
+  "name": "philosophe-quotidien",
+  "version": "1.0.0",
+  "description": "Philosophe Quotidien - a simple French philosophy application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "french",
+    "philosophy",
+    "philosophy"
+  ],
+  "author": "Harith Khawaja",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.15.3",
+    "http": "0.0.0",
+    "mongoose": "^4.11.1",
+    "path": "^0.12.7",
+    "request": "^2.81.0"
+  }
+}
