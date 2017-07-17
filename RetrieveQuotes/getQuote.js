@@ -4,6 +4,8 @@ var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+var port = process.env.MONGO_URL;
+
 //our quotes schema
 var quoteSchema = new Schema ({
 		quote: {type: String, required: true, default: ""},
@@ -13,7 +15,8 @@ var quoteSchema = new Schema ({
 
 router.get('/', function (req, res)  {
 	console.log("I'm here");
-	mongoose.connect("mongodb://localhost/quotes");
+	mongoose.connect(port || "mongodb://localhost/quotes");
+	mongoose.connection.on('error', console.error.bind(console, 'Mongo error: '));
 	var Quote = mongoose.model('quote', quoteSchema);
 	Quote.find({}, function(error, response) {
 		console.log("Received");
