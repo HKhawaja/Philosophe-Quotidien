@@ -15,7 +15,7 @@ var quoteSchema = new Schema ({
 
 router.get('/', function (req, res)  {
 	console.log("I'm here");
-	mongoose.connect(port || "mongodb://localhost/quotes");
+	mongoose.connect("mongodb://philosophe-quotidien-app-git-db:Uv3ciEx6pKr68CPieUKFQMASb6lTx30SuiN87gUbPvVXZtL4Mnn9rRKnwhBwisWlZJclxZHfl5MZxdLla0rpvg==@philosophe-quotidien-app-git-db.documents.azure.com:10250/?ssl=true" || "mongodb://localhost/quotes");
 	mongoose.connection.on('error', console.error.bind(console, 'Mongo error: '));
 	var Quote = mongoose.model('quote', quoteSchema);
 	Quote.find({}, function(error, response) {
