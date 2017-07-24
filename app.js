@@ -14,8 +14,8 @@ app.use('/scrapePage', scrapePageRoute);
 app.use('/getNewQuote', getQuote);
 app.use(express.static(path.join(__dirname)));
 app.get('/', function(req, res, next) {
-	res.sendFile(__dirname + '/index.html');
-	res._write(req);
+	// res.sendFile(__dirname + '/index.html');
+	res.write(req);
 	next();
 });
 
