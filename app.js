@@ -12,7 +12,7 @@ var app = express();
 http.createServer(app).listen(process.env.PORT || 8001);
 app.use('/scrapePage', scrapePageRoute);
 app.use('/getNewQuote', getQuote);
-app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname)));
 app.get('/', function(req, res, next) {
 	res.sendFile(__dirname + '/index.html');
 	next();
