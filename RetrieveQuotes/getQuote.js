@@ -3,6 +3,7 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var fs = require('fs');
 
 var port = process.env.MONGO_URL;
 
@@ -14,14 +15,20 @@ var quoteSchema = new Schema ({
 });
 
 router.get('/', function (req, res)  {
-	console.log("I'm here");
-	mongoose.connect("mongodb://philosophe-quotidien-app-git-db:Uv3ciEx6pKr68CPieUKFQMASb6lTx30SuiN87gUbPvVXZtL4Mnn9rRKnwhBwisWlZJclxZHfl5MZxdLla0rpvg==@philosophe-quotidien-app-git-db.documents.azure.com:10250/?ssl=true" || "mongodb://localhost/quotes");
+	console.log("getting quote");
+	mongoose.connect(port || "mongodb://localhost/quotes");
 	mongoose.connection.on('error', console.error.bind(console, 'Mongo error: '));
 	var Quote = mongoose.model('quote', quoteSchema);
-	Quote.find({}, function(error, response) {
+	Quote.find().lean().exec(function(error, response) {
 		console.log("Received");
+		// resp = JSON.stringify(resp);
+		// fs.writeFile('quotes_.json', resp, function(error, response) {
+		// 	if (error) throw error;
+		// 	console.log(response);
+		// })
 		res.send(chooseResponse(response));
 	});
+
 });
 
 function chooseResponse(response) {

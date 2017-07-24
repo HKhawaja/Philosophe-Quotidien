@@ -9,7 +9,7 @@ var path = require('path');
 var app = express();
 
 //set up server and app routing
-http.createServer(app).listen(8001);
+// http.createServer(app).listen(8001);
 app.use('/scrapePage', scrapePageRoute);
 app.use('/getNewQuote', getQuote);
 app.use(express.static(path.join(__dirname)));

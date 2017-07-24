@@ -9,9 +9,11 @@
 	function getQuotes ($http) {
 		var myObject = {};
 		myObject.getNewQuote = function() {
-			return $http.get("http://localhost:8001/getNewQuote");
+			return $http.get("http://philosophe-quotidien-app-git.azurewebsites.net/getNewQuote");
 		};
 		return myObject;
 	}
 
 })();
+
+// http://localhost:8001
