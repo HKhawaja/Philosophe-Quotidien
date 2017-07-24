@@ -9,13 +9,13 @@ var path = require('path');
 var app = express();
 
 //set up server and app routing
-http.createServer(app).listen(process.env.PORT || 8001);
 app.use('/scrapePage', scrapePageRoute);
 app.use('/getNewQuote', getQuote);
-// app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname)));
 app.get('/', function(req, res, next) {
-	// res.sendFile(__dirname + '/index.html');
+	res.sendFile(__dirname + '/index.html');
 	res.send(req);
 	next();
 });
 
+http.createServer(app).listen(process.env.PORT || 8001);

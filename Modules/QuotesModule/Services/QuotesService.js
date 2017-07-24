@@ -9,7 +9,7 @@
 	function getQuotes ($http) {
 		var myObject = {};
 		myObject.getNewQuote = function() {
-			return $http.get("getNewQuote");
+			return $http.get("/getNewQuote");
 		};
 		return myObject;
 	}
