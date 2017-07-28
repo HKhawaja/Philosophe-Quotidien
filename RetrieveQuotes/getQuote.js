@@ -21,11 +21,11 @@ router.get('/', function (req, res)  {
 	var Quote = mongoose.model('quote', quoteSchema);
 	Quote.find().lean().exec(function(error, response) {
 		console.log("Received");
-		// resp = JSON.stringify(resp);
-		// fs.writeFile('quotes_.json', resp, function(error, response) {
-		// 	if (error) throw error;
-		// 	console.log(response);
-		// })
+		response = JSON.stringify(response);
+		fs.writeFile('quotes_try.json', response, function(error, resp) {
+			if (error) throw error;
+			console.log(resp);
+		})
 		res.send(chooseResponse(response));
 	});
 
