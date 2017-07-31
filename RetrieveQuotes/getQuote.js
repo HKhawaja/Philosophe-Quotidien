@@ -19,16 +19,19 @@ router.get('/', function (req, res)  {
 	mongoose.connect(port || "mongodb://localhost/quotes");
 	mongoose.connection.on('error', console.error.bind(console, 'Mongo error: '));
 	var Quote = mongoose.model('quote', quoteSchema);
-	Quote.find().lean().exec(function(error, response) {
+	// Quote.find().lean().exec(function(error, response) {
+	// 	console.log("Received");
+	// 	response = JSON.stringify(response);
+	// 	fs.writeFile('quotes_try.json', response, function(error, resp) {
+	// 		if (error) throw error;
+	// 		console.log(resp);
+	// 	})
+	// 	res.send(chooseResponse(response));
+	// });
+	Quote.find(function(error, response) {
 		console.log("Received");
-		response = JSON.stringify(response);
-		fs.writeFile('quotes_try.json', response, function(error, resp) {
-			if (error) throw error;
-			console.log(resp);
-		})
 		res.send(chooseResponse(response));
 	});
-
 });
 
 function chooseResponse(response) {
